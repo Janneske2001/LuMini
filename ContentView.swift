@@ -651,16 +651,6 @@ struct ContentView: View {
                 
                 Spacer()
                 
-                Button("📤 GET") {
-                    serialManager.getState()
-                }
-                .buttonStyle(.bordered)
-                .foregroundColor(.orange)
-                .font(.caption)
-                .help("Debug: send GET command to fetch current state")
-                
-                Spacer().frame(width: 20)
-                
                 Button("Save") {
                     showingSaveAlert = true
                 }
