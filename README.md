@@ -158,4 +158,3 @@ If you find this app useful, consider supporting future development:
 
 *Made with ❤️ and Swift.*  
 *Designed for the Mac mini, by a Mac user.*
-```
