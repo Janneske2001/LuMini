@@ -18,10 +18,12 @@ This repository contains the **macOS companion app**.
 - **Native macOS color picker** – no opacity slider, instant updates  
 - **File‑based presets** – save/load `.rgb` (JSON) presets  
 - **EEPROM backup** – save to the ring’s internal memory  
-- **Menu bar app** – quick access to power, sleep/wake, launch at boot, and status  
-- **Shortcuts integration** – control the ring via Shortcuts (On/Off, Toggle, Load Preset)  
+- **Modern menu bar popover** – Control Center‑style toggles with native macOS 26 design
+- **Dock icon support** – app appears in the dock when configuration window is open
+- **Shortcuts integration** – control the ring via Shortcuts (On/Off, Toggle, Load Preset, Set Effect)  
 - **Auto Sleep/Wake** – ring turns off when your Mac sleeps and on when it wakes  
-- **Launch at boot** – optional, runs as a background service  
+- **Launch at login** – optional, runs as a background service  
+- **Built‑in update checker** – notifies you when a new version is available
 
 ### Hardware (pre‑assembled)
 - 24‑LED RGB ring (WS2812B)  
@@ -46,20 +48,36 @@ This repository contains the **macOS companion app**.
 
 ---
 
-## 🚀 How to Use
+## 🖥️ How to Use
 
 ### Menu Bar
-- Click the hexagon icon in your menu bar.  
-- Quick controls: **Power**, **Auto Sleep/Wake**, **Launch at Boot**, and **Open Configuration…**.
+- Click the **hexagon** icon in your menu bar.  
+- The popover features **Control Center‑style** toggles:  
+  - **Power** – turn the ring on/off  
+  - **Login** – launch at login  
+  - **Sleep** – auto sleep/wake  
+- Brightness slider for quick adjustments.  
+- Action buttons:  
+  - **Gear** – open the full configuration window  
+  - **Update** – check for updates (with a satisfying spin animation!)  
+  - **Close** – quit the app
 
-<!-- IMAGE: Screenshot of the menu bar dropdown (menu-bar.png) -->
+<!-- IMAGE: Screenshot of the menu bar popover (menu-bar.png) -->
 
 ### Main Window
-- Choose an **Effect** (Static, Chase, Knight, Rainbow, Breathe, Gradient).  
+- The window header features the connection status.
+- Choose an **Effect** (Static, Breathe, Chase, Knight, Gradient, Rainbow).  
 - Adjust **Main Color**, **Background Color**, **Speed**, **Brightness**, and **Scale**.  
 - For Gradient: drag colour dots, tap to edit, double‑tap to remove, click **Add Color**.
 
 <!-- IMAGE: Screenshot of the main app window showing the gradient editor (app-window.png) -->
+
+### About Popover
+- Click the profile picture in the bottom toolbar to open the About popover.
+- Quick links to **Twitter**, **Donate**, and **GitHub**.
+- Update section with **checkbox** for automatic updates and a **Check Now** button.
+
+<!-- IMAGE: Screenshot of the About popover (about.png) -->
 
 ### Presets
 - **Save to Ring (EEPROM)** – stores settings on the device.  
@@ -90,15 +108,16 @@ The app exposes three Shortcuts actions:
 
 - **App** – built with SwiftUI and AppKit (IOKit for serial communication).  
 - **Firmware** – Arduino / C++ with FastLED, custom coded and pre‑flashed.  
-- **Communication** – USB‑C serial.  
-- **File format** – `.rgb` (JSON) for portability and sharing.
+- **Communication** – USB‑C serial (baud 115200).  
+- **File format** – `.rgb` (JSON) for portability and sharing.  
+- **App Icon** – custom six‑colored ring design in the new `.icon` format (macOS 26+).
 
 ---
 
 ## 📂 Repository Structure
 
 ```
-lumini/
+LuMini/
 ├── LuMini.xcodeproj            # Xcode project
 ├── Sources/                    # App source code (SwiftUI, AppIntents)
 ├── README.md                   # This file
@@ -116,13 +135,14 @@ This repository contains the **macOS app source code only**.
 ### Building from source (for contributors)
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/lumini.git
-   cd lumini
+   git clone https://github.com/Janneske2001/LuMini.git
+   cd LuMini
    ```
 2. Open `LuMini.xcodeproj` in Xcode 14+.
 3. Build and run (⌘R).
 
-> ℹ️ The app runs as a menu bar utility – the main window opens from the menu.
+> ℹ️ The app runs as a menu bar utility – the main window opens from the menu bar.  
+> ℹ️ The app icon is in the new `.icon` format (macOS 26+). For older macOS versions, the app will fall back to a default icon.
 
 ---
 
@@ -158,4 +178,3 @@ If you find this app useful, consider supporting future development:
 
 *Made with ❤️ and Swift.*  
 *Designed for the Mac mini, by a Mac user.*
-```
